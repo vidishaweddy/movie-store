@@ -1,0 +1,39 @@
+<h1><%= content_for(:title, "Movie Store") %></h1>
+<div class="section">
+  <div class="container">
+        <div class="rent-title">
+          <h1>Rental List</h1>
+          <br/>
+        </div>
+        <% @carts.each do |cart| %>
+          <% if cart.quantity > 0 %>
+            <table class="pure-table">
+              <tr class="row-table">
+                <td class="left-bar">
+                  <%= link_to cart.movie do %>
+                    <% if cart.movie.poster.present? %>
+                      <%= image_tag cart.movie.poster_url %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td class="middle-bar">
+                  <h4 class="scale ptm"> <%= cart.movie.title %> </h4>
+                  <h5 class="scale">$ <%= cart.movie.price %></h5>
+                  <h5 class="scale">Quantity : <%= cart.quantity %></h5>
+                  <h5 class="scale">Renter :  <%= cart.user.first_name %> <%= cart.user.last_name %></h5>
+                  <h5 class="scale">Return At :  <%= cart.return_at %></h5>
+                </td>
+                <td class="cart-button right-bar">
+                  <%= button_to "Return Movie", cart, :method => :delete, class: "buttons button-primary" %>
+                <br/>
+                  <%= button_to "Show PDF", receipt_path(cart, :format => :pdf), :method => :get, class: "buttons button-primary" %>
+                </td>
+              </tr>
+              <tr>
+                <hr>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<h1><%= content_for(:title, "Movie Store") %></h1>
+<div class="section">
+  <div class="container">
+    <div class="row main-low-margin">
+      <h2>Log in</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field-log">
+          <h6>Email :</h6>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        </br>
+      
+        <div class="field-log">
+          <h6>Password :</h6>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+        </br>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

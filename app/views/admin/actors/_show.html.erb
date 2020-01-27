@@ -1,0 +1,13 @@
+<%= portlet 'Details' do %>
+  <%= details_panel_for @actor do |dp| %>
+    <%= dp.item :first_name, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :last_name, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :dob, item_html: { class: 'pure-u-1' } %>
+  <% end %>
+
+  <%= details_panel_controls do %>
+    <%= edit_button(edit_admin_actor_path(@actor)) %>
+    <%= delete_button(admin_actor_path(@actor)) %>
+    <%= back_button(admin_actors_path) %>
+  <% end %>
+<% end %>

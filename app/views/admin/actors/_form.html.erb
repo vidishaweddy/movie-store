@@ -1,0 +1,19 @@
+<%= simple_form_for [:admin,@actor], html: { class: 'pure-form pure-form-aligned' } do |f| %>
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-1">
+      <%= f.input :first_name, input_html: { class: 'pure-input-1'} %>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-1">
+      <%= f.input :last_name, input_html: { class: 'pure-input-1'} %>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-1">
+      <%= f.input :dob, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12 %>
+    </div>
+  </div>
+
+  <div class="pure-controls">
+    <%= save_button %>
+    <%= cancel_button(admin_actors_path) %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+development:
+  adapter: async
+  PDF_SERVER_URL: http://localhost:9998
+
+test:
+  adapter: async
+  PDF_SERVER_URL: http://localhost:9998
+
+production:
+  adapter: redis
+  url: redis://localhost:6379/1
+  PDF_SERVER_URL: http://localhost:9998

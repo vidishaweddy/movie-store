@@ -1,0 +1,36 @@
+<h1><%= content_for(:title, "Movie Store") %></h1>
+<div class="section">
+  <div class="container">
+    <div class="row main-low-margin">
+      <h4 class="column">Featured Movies</h4>
+      <div class="column">
+        <ul class="movies-grid no-bullet row">
+          <% @movies.each do |movie| %>
+            <div class="col-lg-3 col-md-4 col-sm-12 col-offset-6 centered">
+              <div class="movie-card">
+                <%= link_to movie, class: "poster" do %>
+                  <% if movie.poster.present? %>
+                    <%= image_tag movie.poster_url %>
+                  <% end %>
+                <% end %>
+                <div class="movie-info ell glassy-bg padmy padlx">
+                  <div class="title">
+                    <%= link_to movie, class: "movie-link" do %>
+                      <%= movie.title %><span>(<%= movie.release_year %>)</span>
+                    <% end %>
+                    </br>
+                    <p class="left price label movie-label radius">$ <%= movie.price %></p>
+                    <%= link_to movie.imdb, class: "right" do %>
+                      <%= image_tag asset_path("imdb_logo.png") %>
+                    <% end %>
+                    <br/><br/><br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

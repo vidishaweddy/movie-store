@@ -1,0 +1,15 @@
+<%= portlet 'Details' do %>
+  <%= details_panel_for @user do |dp| %>
+    <%= dp.item :email, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :first_name, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :last_name, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :dob, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :address, item_html: { class: 'pure-u-1' } %>
+    <%= dp.item :age, item_html: { class: 'pure-u-1' } %>
+  <% end %>
+
+  <%= details_panel_controls do %>
+    <%= edit_button(edit_admin_user_path(@user)) %>
+    <%= back_button(admin_users_path) %>
+  <% end %>
+<% end %>

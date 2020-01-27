@@ -1,0 +1,48 @@
+<h1><%= content_for(:title, "Movie Store") %></h1>
+<div class="section">
+  <div class="container">
+    <div class="row main-low-margin">
+      <div class="large-3 small-12 column">
+        <% if @movie.poster.present? %>
+          <%= image_tag @movie.poster_url %>
+        <% end %>
+      </div>
+
+      <div class="large-9 small-9 column">
+        <h3>
+          <%= @movie.title %>
+          (<%= @movie.release_year %>)
+          <%= link_to @movie.imdb do %>
+            <%= image_tag asset_path("imdb_logo.png") %>
+          <% end %>
+          <% if can? :save, @movie %>
+            <% if @movie.quantity > 0 %>
+              <%= link_to 'Rent Now', carts_new_path(@movie), class: "btn btn-primary new-cart" %>
+            <% else %>
+              <div class="label movie-label radius mb1">
+                Out of Stock
+              </div>
+            <% end %>
+          <% end %>
+        </h3>
+        <p class="label movie-label radius mb1">$ <%= @movie.price %></p>
+        Type : <%= @movie.filetype %>
+        <br/>
+        <p>
+          Starring :
+          <% @movie.actors.each do |actor| %>
+            <%= actor.first_name %><span> </span><%= actor.last_name %> |
+          <% end %>
+          <br/>
+          Ratings : <%= @movie.rating %><br/>
+          Genres :
+          <% @movie.genres.each do |genre| %>
+            <%= genre.name %>  |
+          <% end %>
+        </p>
+
+        <p><%= @movie.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

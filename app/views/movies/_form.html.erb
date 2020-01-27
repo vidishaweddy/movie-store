@@ -1,0 +1,95 @@
+<%= simple_form_for(movie) do |f| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h4> Title : </h4>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <h4> Release Year : </h4>
+    <%= f.number_field :release_year %>
+  </div>
+
+  <div class="field">
+    <h4> Rating : </h4>
+    <%= f.text_field :rating %>
+  </div>
+
+  <div class="field">
+    <h4> Number of Copy : </h4>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <h4> Storage Format : </h4>
+    <%= f.text_field :filetype %>
+  </div>
+
+  <div class="field">
+    <h4> Price : </h4>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <h4> Description : </h4>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <h4> IMDB ID : </h4>
+    <%= f.text_field :imdb_id %>
+  </div>
+
+  <div class="field">
+    <h4> Poster : </h4>
+    <%= f.file_field :poster %>
+  </div>
+
+  <div class="check">
+    <h4> Genres: </h4>
+    <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |b| %>
+      <%= b.label class:"check" do%>
+       <%= b.check_box %>  <%= b.text %>
+      <% end %>
+    <% end %>
+  </div>
+  <br/>
+
+  <h4>Actors : </h4>
+  <h7>Add Existing Actor</h7>
+  <div class="searchnest">
+    <%= f.input :actor_ids, collection: Actor.all, label_method: :full_name,
+      input_html: { class: 'select2', multiple: :multiple } %>
+  </div>
+  <br/>
+
+  <h7>Add New Actor</h7>
+  <div class="nest">
+  <%= f.nested_fields_for :actors, Actor.new do |b| %>
+    <div class="nest-inline">
+      <%= b.remove_nested_fields_link %>
+      <h6> First Name :</h6>
+      <%= b.text_field :first_name %>
+      <h6> Last Name :</h6>
+      <%= b.text_field :last_name %>
+      <h6>Date of Birth :</h6>
+      <%= b.text_field :dob, 'data-behaviour' => 'datepicker'  %>
+    </div>
+  <% end -%>
+  </div>
+  <p><%= f.add_nested_fields_link :actors, 'Add Actor', class: 'btn btn-primary', role: 'button' %></p>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

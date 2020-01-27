@@ -1,0 +1,36 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://localhost:3000">Movie Store</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+          <li><%= link_to current_user.email, edit_user_registration_path %></li>
+          <% if can? :create, Movie %>
+            <li><%= link_to "Admin Menu", admin_root_path, class: "admin-menu" %></li>
+          <% else %>
+            <li><%= link_to "Rental List", cart_path(current_user.id), class: "rent-list" %></li>
+          <% end %>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+
+        <li>
+          <div class="navbar-search">
+            <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+              <div class="large-8 small-9 columns">
+                <%= text_field_tag :search, params[:search], placeholder: "Search Movie Name", id: "search-form" %>
+              </div>
+              <div class="large-4 small-5 columns">
+                <%= submit_tag "Search", :name => nil, class: "btn btn-primary"%>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

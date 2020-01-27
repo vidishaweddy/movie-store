@@ -1,0 +1,36 @@
+<div class="admin-search">
+  <%= form_tag(admin_actors_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Actor", id: "search-form" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+</div>
+
+<table id="admin-table" class="pure-table pure-table-striped pure-table-bordered">
+  <thead>
+    <tr>
+      <th> Full Name </th>
+      <th> Date of Birth </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @actors.each do |actor| %>
+      <tr>
+        <td>
+          <%= link_to actor, admin_actor_path(actor) %>
+        </td>
+        <td>
+          <%= actor.dob %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="new-button">
+  <%= link_to 'New Actor', new_admin_actor_path, class:"buttons button-primary" %>
+</div>
+
+<div class="clear-fix">
+  <%= page_entries_info(@actors) %>
+  <%= paginate(@actors, remote: true) %>
+</div>

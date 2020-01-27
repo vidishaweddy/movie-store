@@ -1,0 +1,51 @@
+$section-indent: 2em;
+$black: #000;
+
+.content {
+  width: 950px;
+  height: 1200px;
+  color: $black;
+  padding: 2px;
+
+  .page-header {
+    h1 {
+      border-bottom: 1px solid;
+      width: 100%;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    page-break-after: avoid;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0.5em;
+
+    tr {
+      page-break-after: avoid;
+      page-break-before: avoid;
+      page-break-inside: avoid;
+    }
+
+    th {
+      text-align: right;
+      vertical-align: top;
+      width: 28%;
+    }
+
+    td {
+      vertical-align: top;
+      page-break-after: avoid;
+      page-break-before: avoid;
+    }
+  }
+}
+
+.foot-pdf {
+  float: right;
+  display: block;
+}

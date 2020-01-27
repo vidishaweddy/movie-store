@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Movie Store" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+  <div class="container">
+    <%= render "layouts/header" %>
+    <div class="section">
+      <body class="content-main">
+        <div class="row main-low-margin">
+          <div class="large-3 small-12 column">
+            <div id="main-content" class="row full-min-height">
+              <%= render "layouts/alerts" %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+        <footer class="foot">
+          <div class="column large-12">
+            <hr>
+            <p>© MovieStore</p>
+          </div>
+        </footer>
+      </body>
+    </div>
+  </div>
+</html>

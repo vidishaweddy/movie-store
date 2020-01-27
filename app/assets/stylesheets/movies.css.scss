@@ -1,0 +1,20 @@
+// Index page style
+.movies-grid {
+  .movie-card {
+    width:220px;
+    float: left !important;
+    .poster {
+      padding: 0px;
+    }
+    .poster img {
+      height: 325px;
+      width:100%;
+    }
+    .movie-info {
+      .title {
+        font-size: 11pt;
+        height: 9em;
+      }
+    }
+  }
+}

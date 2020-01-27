@@ -1,0 +1,153 @@
+/*
+ *= require pure
+ *= require grids-responsive
+ *= require pure_css_reset
+ *= require font-awesome
+ *= require exo2
+ *= require pure_admin
+ *= require select2
+ *= require dataTables/jquery.dataTables
+ */
+
+
+ .cart-movie {
+   padding-bottom: 25px !important;
+ }
+
+ hr {
+   border: solid 1px dimgrey;
+ }
+
+ .cart-button {
+   margin-top: 100px;
+ }
+
+ .buttons {
+   display: inline-block;
+   padding: 6px 12px;
+   margin-bottom: 0;
+   font-size: 14px;
+   font-weight: normal;
+   line-height: 1.428571429;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: middle;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   border-radius: 4px;
+   -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+        -o-user-select: none;
+           user-select: none;
+ }
+
+ .buttons:focus {
+   outline: thin dotted #333;
+   outline: 5px auto -webkit-focus-ring-color;
+   outline-offset: -2px;
+ }
+
+ .buttons:hover,
+ .buttons:focus {
+   color: #333333;
+   text-decoration: none;
+ }
+
+ .buttons:active,
+ .buttons.active {
+   background-image: none;
+   outline: 0;
+   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+           box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+ }
+
+ .buttons.disabled,
+ .buttons[disabled],
+ fieldset[disabled] .buttons {
+   pointer-events: none;
+   cursor: not-allowed;
+   opacity: 0.65;
+   filter: alpha(opacity=65);
+   -webkit-box-shadow: none;
+           box-shadow: none;
+ }
+
+ .button-primary {
+   width: 150px;
+   color: #ffffff;
+   background-color: #428bca;
+   border-color: #357ebd;
+ }
+
+ .button-primary:hover,
+ .button-primary:focus,
+ .button-primary:active,
+ .button-primary.active,
+ .open .dropdown-toggle.button-primary {
+   color: #ffffff;
+   background-color: #3276b1;
+   border-color: #285e8e;
+ }
+
+ .button-primary:active,
+ .button-primary.active,
+ .open .dropdown-toggle.button-primary {
+   background-image: none;
+ }
+
+ .button-primary.disabled,
+ .button-primary[disabled],
+ fieldset[disabled] .button-primary,
+ .button-primary.disabled:hover,
+ .button-primary[disabled]:hover,
+ fieldset[disabled] .button-primary:hover,
+ .button-primary.disabled:focus,
+ .button-primary[disabled]:focus,
+ fieldset[disabled] .button-primary:focus,
+ .button-primary.disabled:active,
+ .button-primary[disabled]:active,
+ fieldset[disabled] .button-primary:active,
+ .button-primary.disabled.active,
+ .button-primary[disabled].active,
+ fieldset[disabled] .button-primary.active {
+   background-color: #428bca;
+   border-color: #357ebd;
+ }
+
+ .rent-title {
+   margin: auto;
+   text-align: center;
+ }
+
+ .new-button {
+   margin: auto;
+   text-align: center;
+ }
+
+ .row-table {
+  text-align: center;
+ }
+
+ .left-bar {
+   width: 400px;
+ }
+
+ .middle-bar  {
+   width: 550px;
+ }
+
+ .pure-buttons {
+   float: right;
+ }
+
+ .admin-search {
+   margin: auto;
+   text-align: center;
+   visibility: hidden;
+ }
+
+ h3 {
+   margin-left: 50px;
+ }

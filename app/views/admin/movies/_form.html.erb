@@ -1,0 +1,66 @@
+<%= simple_form_for [:admin,@movie], html: { class: 'pure-form pure-form-aligned' } do |f| %>
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2">
+      <h3> Movie Details </h3>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :title, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :release_year, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :rating, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :quantity, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :price, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :filetype, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :description, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :filetype, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :imdb_id, input_html: { class: 'pure-input-1'} %>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-1">
+        <%= f.input :poster, as: :file %>
+      </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2">
+      <h3> Actors Details </h3>
+      <%= f.association :actors, collection: Actor.all, label_method: :full_name,
+        input_html: { class: 'select2', multiple: 'true'} %>
+      <%= f.nested_fields_for :actors, Actor.new do |b| %>
+        <div class="pure-buttons">
+          <%= b.remove_nested_fields_link %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-1">
+          <%= b.input :first_name, input_html: { class: 'pure-input-1'} %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-1">
+          <%= b.input :last_name, input_html: { class: 'pure-input-1'} %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-1">
+          <%= b.input :dob, as: :date %>
+        </div>
+      <% end %>
+      <%= f.add_nested_fields_link :actors, 'Add Actor', class: 'pure-buttons buttons button-primary', role: 'button' %>
+
+    <br/>
+    <h3> Genres Details </h3>
+    <%= f.association :genres, collection: Genre.all,
+      input_html: { class: 'select2', multiple: 'true'} %>
+    </div>
+  </div>
+  <div class="pure-controls">
+    <%= save_button %>
+    <%= cancel_button %>
+  </div>
+<% end %>

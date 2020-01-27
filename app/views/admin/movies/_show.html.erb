@@ -1,0 +1,58 @@
+<%= portlet 'Movie Details' do %>
+  <table>
+    <tr>
+      <td>
+        <br/>
+        <div class="movie-card">
+          <% if @movie.poster.present? %>
+            <%= image_tag @movie.poster_url %>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <%= details_panel_for @movie do |dp| %>
+          <%= dp.item :title %>
+          <%= dp.item :release_year %>
+          <%= dp.item :price %>
+          <%= dp.item :rating %>
+          <%= dp.item :quantity %>
+          <%= dp.item :filetype %>
+          <%= dp.item :imdb %>
+          <%= dp.item :description %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <%= details_panel_controls do %>
+    <%= edit_button(edit_admin_movie_path(@movie)) %>
+    <%= delete_button(admin_movie_path(@movie)) %>
+    <%= back_button(admin_movies_path) %>
+  <% end %>
+<% end %>
+
+<% if @movie.actors.present? %>
+  <%= portlet 'Actors Details' do %>
+    <% @movie.actors.each do |actor| %>
+      <%= details_panel_for actor do |dp| %>
+        <div class="pure-u-1 pure-u-md-1-2">
+          <%= dp.item :first_name %>
+          <%= dp.item :last_name %>
+          <%= dp.item :dob %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @movie.genres.present? %>
+  <%= portlet 'Genres Details' do %>
+    <% @movie.genres.each do |genre| %>
+      <%= details_panel_for genre do |dp| %>
+        <div class="pure-u-1 pure-u-md-1-2">
+          <%= dp.item :name %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

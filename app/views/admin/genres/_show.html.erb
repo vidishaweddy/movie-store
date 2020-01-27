@@ -1,0 +1,11 @@
+<%= portlet 'Details' do %>
+  <%= details_panel_for @genre do |dp| %>
+    <%= dp.item :name %>
+  <% end %>
+
+  <%= details_panel_controls do %>
+    <%= edit_button(edit_admin_genre_path(@genre)) %>
+    <%= delete_button(admin_genre_path(@genre)) %>
+    <%= back_button(admin_genres_path) %>
+  <% end %>
+<% end %>

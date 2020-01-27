@@ -1,0 +1,121 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Menu</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag "admin", media: "all" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,700,700italic,400italic,300italic' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="main-header">
+      <div class="clear-fix">
+        <h1 class="pure-menu-heading">
+          <%= link_to admin_root_path do %>
+            Admin<span class="hidden-sm">istrator</span> Control Panel
+          <% end %>
+        </h1>
+
+        <nav id="account-menu" class="pure-menu pure-menu-horizontal">
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item hidden-sm user-details">
+              Welcome User
+            </li>
+            <li class="pure-menu-item">
+              <%= link_to root_path, class: 'pure-menu-link' do %>
+                <span class="fa fa-external-link"></span>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="main-menu-container">
+        <div id="main-menu">
+          <%= menu menu_html: { class: 'pure-menu-horizontal pure-menu-scrollable' } do %>
+            <%= menu_item_and_link admin_root_path do %>
+              <span class="fa fa-fw fa-home"></span> Home
+            <% end %>
+            <%= menu_item_and_link admin_genres_path do %>
+              Genres Management
+            <% end %>
+            <%= menu_item_and_link admin_actors_path do %>
+              Actors Management
+            <% end %>
+            <%= menu_item_and_link admin_movies_path do %>
+              Movies Management
+            <% end %>
+            <%= menu_item_and_link admin_users_path do %>
+              Users Management
+            <% end %>
+            <%= menu_item_and_link root_path do %>
+              User View
+            <% end %>
+          <% end %>
+
+          <div class="fade-left" rel="main-menu-scroll" data-direction="left">
+            <span class="fa fa-angle-double-left"></span>
+          </div>
+
+          <div class="fade-right" rel="main-menu-scroll" data-direction="right">
+            <span class="fa fa-angle-double-right"></span>
+          </div>
+        </div>
+
+        <div id="sub-menu" class="hidden">
+          <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable"></nav>
+
+          <div class="fade-left" rel="sub-menu-scroll" data-direction="left">
+            <span class="fa fa-angle-double-left"></span>
+          </div>
+
+          <div class="fade-right" rel="sub-menu-scroll" data-direction="right">
+            <span class="fa fa-angle-double-right"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="breadcrumbs">
+        <%= render_crumbs separator: raw(' <span class="fa fa-angle-right"></span> '),
+              truncate: 16, link_last_crumb: false %>
+      </div>
+
+      <div id="back-to-top">
+        <span class="fa fa-chevron-up"></span>
+        <span class="middle">Back to top</span>
+        <span class="fa fa-chevron-up"></span>
+      </div>
+
+      <div id="flashes" class="fixed"></div>
+    </header>
+
+    <section id="main">
+      <%= yield %>
+    </section>
+
+    <footer id="main-footer">
+      &copy; <%= Time.now.year %> Movie Store. All rights reserved.
+      <span style="float: right;" class="hidden-sm">This site is built with &lt;3 using Pure 0.6.0</span>
+    </footer>
+  </div>
+</body>
+
+<%= javascript_include_tag 'pure_admin' %>
+<!--[if lt IE 9]>
+  <%= javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js' %>
+<![endif]-->
+<script type="text/javascript">
+  $('document').ready(function() {
+    <% flash.each do |type, message| %>
+      PureAdmin.flashMessages.create('<%= type %>', '<%= message %>');
+    <% end %>
+  });
+</script>
+</html>
