@@ -232,7 +232,7 @@ GEM
       ttfunk
     pg (0.20.0)
     public_suffix (2.0.5)
-    puma (3.9.1)
+    puma (3.12.3)
     pure-css-rails (0.6.0)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -394,7 +394,7 @@ DEPENDENCIES
   paranoia
   pdf-reader
   pg (~> 0.18)
-  puma (~> 3.0)
+  puma (~> 3.12)
   pure-admin-rails!
   pure-css-rails
   pure-css-reset-rails!
